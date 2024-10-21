@@ -1,0 +1,57 @@
+IDEAL
+MODEL small
+STACK 100h
+DATASEG
+; ----------VARS----------
+
+	A dw 4
+	B dw 3
+	C dw 2
+	D dw 1
+
+; ----------/VARS----------
+
+CODESEG
+start:
+	mov ax, @data
+	mov ds, ax
+; ---------CODE-----------
+	
+	mov si, 0
+	loopStart:
+		
+		mov ax, [A]
+		cmp ax, [B]
+		jle dontSwap1
+		;swap elements
+		xchg ax,[B]
+		mov [A], ax
+		dontSwap1:
+		
+		mov ax, [B]
+		cmp ax, [C]
+		jle dontSwap2
+		;swap elements
+		xchg ax,[C]
+		mov [B], ax
+		dontSwap2:
+		
+		mov ax, [C]
+		cmp ax, [D]
+		jle dontSwap3
+		;swap elements
+		xchg ax,[D]
+		mov [C], ax
+		dontSwap3:
+		
+		
+	inc si	
+	cmp si,4
+	jl loopStart
+; ---------/CODE-----------
+
+exit:
+	mov ax, 4c00h
+	int 21h
+END start
+
