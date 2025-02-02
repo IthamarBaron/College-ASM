@@ -1,0 +1,3 @@
+given a string with words separated with spaces (" ")
+print every word in the string
+use REP
