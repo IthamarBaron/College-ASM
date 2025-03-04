@@ -32,7 +32,7 @@ search:
 	dec di
 	mov [di], byte ptr '$'
 	
-	;add $
+
 	MOV DX, BX
 	MOV AH, 09h
 	INT 21h 
